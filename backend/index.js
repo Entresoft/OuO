@@ -8,7 +8,7 @@ var cookieParser = require('cookie-parser');
 var arr_equal = require('array-equal');
 var postMethod = require('postMethod.js');
 var getMethod = require('getMethod');
-var headMethod = require('headMethod');
+var profileMethod = require('profileMethod');
 var app = express();
 var Db = require('Database');
 var cors = require('cors');
@@ -22,15 +22,31 @@ Db.connect(function(){
   app.listen(3000);
 });
 
-app.head('/', cors(corsOption) , function(req, res){
-  headMethod(req, res);
-});
-
 //Because I give it wrong parameter before, and I don' want to change it. So I use this code...
 //these two method use Questions db.
 app.get('/api/problems', function(req, res){
   getMethod(req, res, Db.db.collection('Questions'));
 });
+
+app.get('/users/:id', function(req, res){
+  profileMethod(req, res);
+});
+
+app.post('/login', function(req, res){
+  regist.login(req, res);
+})
+
+app.post('/register', function(req, res){
+  regist.register(req, res);
+})
+
+app.get('/verify', function(req, res){
+  regist.verify(req, res);
+})
+
+app.post('/logout', function(req, res){
+  regist.logout(req, res);
+})
 
 app.post('/api', function(req, res){
   postMethod(req, res, Db.db.collection('Questions'));
