@@ -8,6 +8,7 @@ var cookieParser = require('cookie-parser');
 var arr_equal = require('array-equal');
 var postMethod = require('postMethod.js');
 var getMethod = require('getMethod');
+var tagPostMethod = require('tagPostMethod');
 var profileMethod = require('profileMethod');
 var app = express();
 var Db = require('Database');
@@ -48,6 +49,10 @@ app.post('/logout', function(req, res){
   regist.logout(req, res);
 })
 
-app.post('/api', function(req, res){
+app.post('/api/upans', function(req, res){
   postMethod(req, res, Db.db.collection('Questions'));
+});
+
+app.post('/api/', function(req, res){
+  tagPostMethod(req, res);
 });
