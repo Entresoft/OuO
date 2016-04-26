@@ -54,16 +54,16 @@
              <li><a href="#歷史" class="button special">歷史</a></li></h4></p7>
               <p7>  <h4>  <div class="simform__actions"></div>
              <li><a href="#公民" class="button special">公民</a></li></h4></p7>-->
-						<li><a href="#國文" class="button special">國文</a></li>
-						<li><a href="#數學" class="button special">數學</a></li>
-						<li><a href="#英文" class="button special">英文</a></li>
-						<li><a href="#物理" class="button special">物理</a></li>
-						<li><a href="#化學" class="button special">化學</a></li>
-						<li><a href="#生物" class="button special">生物</a></li>
-						<li><a href="#地科" class="button special">地科</a></li>
-						<li><a href="#地理" class="button special">地理</a></li>
-						<li><a href="#歷史" class="button special">歷史</a></li>
-						<li><a href="#公民" class="button special">公民</a></li>
+						<input type="button" id="ch" value="國文">
+						<input type="button" id="math"value="數學">
+						<input type="button" id="en" value="英文">
+						<input type="button" id="phy"value="物理">
+						<input type="button" id="che"value="化學">
+						<input type="button" id="bio"value="生物">
+						<input type="button" id="ges"value="地科">
+						<input type="button" id="geo"value="地理">
+						<input type="button" id="his"value="歷史">
+						<input type="button" id="soc"value="公民">
 						<li><a href="logout.html" >Log Out</a></li>
 					</ul>
 				</nav>
@@ -71,6 +71,7 @@
 
 		<!-- Main -->
 			<section id="main" class="wrapper style1">
+				
 				<header class="major">
 					<h2>單人模式</h2>
 					<p>Beta版本僅有建中段考題，請按上面按鈕來選擇題目類型</p>
@@ -90,8 +91,10 @@
            <section>
            	
            </section>
-            <a href="#" class="image fit">
-				<div class="button0"></div>
+            <!--<a href="#" class="image fit">-->
+				<div id="question">
+					
+				</div>
 				<div class="button1"></div>
 				
 				 <section>
@@ -101,7 +104,25 @@
 
 <script src='https://www.google.com/recaptcha/api.js'></script>
 <div class="g-recaptcha" data-sitekey="6Ld7yBMTAAAAAPfy0UHf5bN_YA4PbNGFCH06Yg0z"></div>
-</section>			
+</section>	
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script> $("#ch").click(function () {
+	$("#question").toggle();
+    
+
+});
+
+  </script> 	
+  <script type="text/javascript">$window.onload = function(){
+    function offset() $.ajax({
+                    url: "db/login.ashx",
+                    type: "post",
+                    data: JSON.stringify(array),
+                    success: function (data) {
+                        document.write(data);
+                    }
+                });
+           </script>	
 					
 
 					
