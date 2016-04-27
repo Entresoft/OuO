@@ -63,25 +63,12 @@
               <nav id="nav">
               <input class="sumbit" name="commit" type="sumbit" id="sign-up"value="註冊帳戶" />
               </nav>
-              <script>var userpw=$("#user-pw").val();
-                      var nickname=$("#nickname").val();
-                      var user-email=$("#user-email").val();
-                      var user-pw-repeat=$("#user-pw-repeat").val();
-                      if(userpw!=user-pw-repeat){
-                        alert("密碼輸入錯誤")
-                      }
-                      $.ajax({ 
-        type: "POST", 
-        url: "/post/register", 
-        dataType: "json", 
-        data: {"email":user-email,"nickname":nickname,}, 
-
-                      </script>
+              
               <!--<span class="simform__actions-sidetext">在註冊之前請先同意我們的 <a class="special" href="#" target="_blank" role="link">隱私與使用條款</a></span>-->
             </div> 
           </form>
         </div> 
-        <!--<div class="logmod__alter">
+        <div class="logmod__alter">
           <div class="logmod__alter-container">
             <a href="#" class="connect facebook">
               <div class="connect__icon">
@@ -102,7 +89,7 @@
             </a>
           </div>
         </div>
-      </div>-->
+      </div>
       <div class="logmod__tab lgm-2">
         <div class="logmod__heading">
           <span class="logmod__heading-subtitle">輸入您的Email和密碼 <strong>來登入</strong></span>
@@ -125,33 +112,7 @@
             <div class="simform__actions">
             <ul class="actions">
             <li><a href="../main-single.html" class="button special"><input class="sumbit" name="commit" type="sumbit" value="登入"   /></a>
-             <script type="text/javascript">$window.onload = function(){
-    function offset()
-       var user-email = new Object();
-                user-email = "user-email";
-             
-
-                var nickname = new Object();
-                nickname = "nickname";
-                $user-pw = hash("sha512",$user-pw)
-                var user-pw = new Object();
-                user-pw= "user-pw";
-           
-    var array= []
-    array.push(user-email)
-    array.push(nickname)
-    array.push(user-pw) }
-    }
-      $.ajax({
-                    url: "db/login.ashx",
-                    type: "post",
-                    data: JSON.stringify(array),
-                    success: function (data) {
-                        document.write(data);
-                    }
-                });
-           
-    </script></li>
+            </li>
              
            <!-- <li><a href="main-single.html" class="button special"></a> </li> 
              </ul></nav>-->  
@@ -191,6 +152,48 @@
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
         <script src="js/index.js"></script>
+ <script type="text/javascript">$window.onload = function(){
+    function offset()
+       var user-email = new Object();
+                user-email = "user-email";
+             
+
+                var nickname = new Object();
+                nickname = "nickname";
+                $user-pw = hash("sha512",$user-pw)
+                var user-pw = new Object();
+                user-pw= "user-pw";
+           
+    var array= []
+    array.push(user-email)
+    array.push(nickname)
+    array.push(user-pw) }
+    }
+      $.ajax({
+                    url: "db/login.ashx",
+                    type: "post",
+                    data: JSON.stringify(array),
+                    success: function (data) {
+                        document.write(data);
+                    }
+                });
+           
+    </script>
+
+        <script>var userpw=$("#user-pw").val();
+                      var nickname=$("#nickname").val();
+                      var user-email=$("#user-email").val();
+                      var user-pw-repeat=$("#user-pw-repeat").val();
+                      if(userpw!=user-pw-repeat){
+                        alert("密碼輸入錯誤")
+                      }
+                      $.ajax({ 
+        type: "POST", 
+        url: "/post/register", 
+        dataType: "json", 
+        data: {"email":user-email,"nickname":nickname,}, 
+
+                      </script>
 
     
     
