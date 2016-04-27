@@ -61,13 +61,27 @@
             </div>
             <div class="simform__actions">
               <nav id="nav">
-              <input class="sumbit" name="commit" type="sumbit" value="註冊帳戶" />
+              <input class="sumbit" name="commit" type="sumbit" id="sign-up"value="註冊帳戶" />
               </nav>
+              <script>var userpw=$("#user-pw").val();
+                      var nickname=$("#nickname").val();
+                      var user-email=$("#user-email").val();
+                      var user-pw-repeat=$("#user-pw-repeat").val();
+                      if(userpw!=user-pw-repeat){
+                        alert("密碼輸入錯誤")
+                      }
+                      $.ajax({ 
+        type: "POST", 
+        url: "/post/register", 
+        dataType: "json", 
+        data: {"email":user-email,"nickname":nickname,}, 
+
+                      </script>
               <!--<span class="simform__actions-sidetext">在註冊之前請先同意我們的 <a class="special" href="#" target="_blank" role="link">隱私與使用條款</a></span>-->
             </div> 
           </form>
         </div> 
-        <div class="logmod__alter">
+        <!--<div class="logmod__alter">
           <div class="logmod__alter-container">
             <a href="#" class="connect facebook">
               <div class="connect__icon">
@@ -88,7 +102,7 @@
             </a>
           </div>
         </div>
-      </div>
+      </div>-->
       <div class="logmod__tab lgm-2">
         <div class="logmod__heading">
           <span class="logmod__heading-subtitle">輸入您的Email和密碼 <strong>來登入</strong></span>
@@ -98,13 +112,13 @@
             <div class="sminputs">
               <div class="input full">
                 <label class="string optional" for="user-name">Email*</label>
-                <input class="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="50" onload="user-mail">
+                <input class="string optional" maxlength="255" id="user-emailx" placeholder="Email" type="email" size="50" onload="user-mail">
               </div>
             </div>
             <div class="sminputs">
               <div class="input full">
                 <label class="string optional" for="user-pw">密碼 *</label>
-                <input class="string optional" maxlength="255" id="user-pw" placeholder="Password" type="password" size="50" />
+                <input class="string optional" maxlength="255" id="user-pwx" placeholder="Password" type="password" size="50" />
                 						<span class="hide-password">Show</span>
               </div>
             </div>

@@ -68,16 +68,7 @@
 					</ul>
 				</nav>
 			</header>
-			<script>
-				var toback=$.ajax({
-					url:"/api/problems",
-					data:$('#getq').serialize(),
-					success:function (data) {
-                        				document.write(data);},
-					datatype:"JSON",
-					)}
-			</script>
-
+			
 		<!-- Main -->
 			<section id="main" class="wrapper style1">
 				
@@ -90,15 +81,28 @@
 				<div class="container">
 					<section>
 						<h2>輸入題目類型</h2>           
-						 <a href="#" ></a>
+						 
 						 <div class="sminputs">
               <div class="input full">
-						 <input class="string optional" maxlength="255" id="q-chs" placeholder="請輸入題目類型" type="Que" size="60"  />
+						 <input class="string optional" maxlength="255" id="search" placeholder="請輸入題目類型" type="Text" size="60"  />
 					</div>
 				
             </div>
 	</section>
            <section>
+<form></form>
+           <script>
+				var list=$("#list")
+				$.ajax({
+					url:"/api/problems",
+					data:"{id,title,content,options[]}"
+					success:function (data) {
+                        				document.write(data);},
+					datatype:"JSON",
+					type:"get",
+					)}
+			</script>
+
            	
            </section>
             <!--<a href="#" class="image fit">-->
@@ -123,7 +127,7 @@
 });
   </script> 
   <script> $("#math").click(function () {
-	$("#math").toggle();
+	$("#qmath").toggle();
     
 
 });
