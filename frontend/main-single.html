@@ -115,8 +115,8 @@
   </script> 	
   <script type="text/javascript">$window.onload = function(){
     function offset() $.ajax({
-                    url: "db/login.ashx",
-                    type: "post",
+                    url: "api/problems",
+                    type: "get",
                     data: JSON.stringify(array),
                     success: function (data) {
                         document.write(data);
