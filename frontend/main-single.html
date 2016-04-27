@@ -68,6 +68,16 @@
 					</ul>
 				</nav>
 			</header>
+			<script>
+				var getq=$.ajax({
+					url:"/api/problems",
+					data:data,
+					success:function (data) {
+                        				document.write(data);
+                    								},
+					datatype:"JSON",
+					)}
+			</script>
 
 		<!-- Main -->
 			<section id="main" class="wrapper style1">
@@ -84,8 +94,9 @@
 						 <a href="#" ></a>
 						 <div class="sminputs">
               <div class="input full">
-						 <input class="string optional" maxlength="255" id="question-choose" placeholder="請輸入題目類型" type="Que" size="60"  />
+						 <input class="string optional" maxlength="255" id="q-chs" placeholder="請輸入題目類型" type="Que" size="60"  />
 					</div>
+					<script></script>
             </div>
 	</section>
            <section>
@@ -111,8 +122,63 @@
     
 
 });
+  </script> 
+  <script> $("#math").click(function () {
+	$("#math").toggle();
+    
 
+});
   </script> 	
+  <script> $("#en").click(function () {
+	$("#qen").toggle();
+    
+
+});
+  </script> 	
+  <script> $("#phy").click(function () {
+	$("#qphy").toggle();
+    
+
+});
+  </script> 	
+  <script> $("#che").click(function () {
+	$("#qche").toggle();
+    
+
+});
+  </script> 	
+  <script> $("#ges").click(function () {
+	$("#qges").toggle();
+    
+
+});
+  </script> 	
+  <script> $("#bio").click(function () {
+	$("#qbio").toggle();
+    
+
+});
+  </script> 	
+  <script> $("#geo").click(function () {
+	$("#qgeo").toggle();
+    
+
+});
+  </script> 	
+  <script> $("#his").click(function () {
+	$("#qhis").toggle();
+    
+
+});
+  </script> 	
+  <script> $("#soc").click(function () {
+	$("#qsoc").toggle();
+    
+
+});
+  </script> 	
+ 	
+ 	
   <script type="text/javascript">$window.onload = function(){
     function offset() $.ajax({
                     url: "api/problems",
