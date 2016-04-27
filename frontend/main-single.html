@@ -69,12 +69,11 @@
 				</nav>
 			</header>
 			<script>
-				var getq=$.ajax({
+				var toback=$.ajax({
 					url:"/api/problems",
-					data:data,
+					data:$('#getq').serialize(),
 					success:function (data) {
-                        				document.write(data);
-                    								},
+                        				document.write(data);},
 					datatype:"JSON",
 					)}
 			</script>
@@ -96,7 +95,7 @@
               <div class="input full">
 						 <input class="string optional" maxlength="255" id="q-chs" placeholder="請輸入題目類型" type="Que" size="60"  />
 					</div>
-					<script></script>
+				
             </div>
 	</section>
            <section>
@@ -149,8 +148,6 @@
   </script> 	
   <script> $("#ges").click(function () {
 	$("#qges").toggle();
-    
-
 });
   </script> 	
   <script> $("#bio").click(function () {
