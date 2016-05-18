@@ -56,8 +56,14 @@
 				</section>
 				<!--<a href="#" class="image fit">-->
 				<div id="question">
-					
+					<div id="AC">
+						<h2>AC</h2>
+					</div>
+					<div id="WA">
+						<h2>WA</h2>
+					</div>
 				</div>
+				
 				<div class="button1"></div>
 				
 				<section>
@@ -65,10 +71,18 @@
 					
 					
 					
-					<script src='https://www.google.com/recaptcha/api.js'></script>
+				<!--<script src='https://www.google.com/recaptcha/api.js'></script>-->
 					<!--<div class="g-recaptcha" data-sitekey="6Ld7yBMTAAAAAPfy0UHf5bN_YA4PbNGFCH06Yg0z"></div>-->
 				</section>	
 				<script src="http://code.jquery.com/jquery-latest.js"></script>
+				<style>
+					.Qq {
+						margin: 1.5em,
+						border: 1px solid black,
+						display: block,
+						background-color: #ffe4e1
+					}
+				</style>
 				<script>
 				var domain = "xueba.entresoft.org";
 				var id = location.pathname.match(/\/[^\/]*$/gi).replace(/^\//gi, '');
@@ -84,35 +98,27 @@
 							var AC = res['AC']	
 							var WA = res['WA']
 							var nickname = res['nickname']
-							
+							AC.forEach(function(element){
+							$('#AC').append('<div class="Qq">'+'<a href=\"'+element+'</div>')
+							})
 						}
 					}
 					
 				})
 					$("#ch").click(function () {
 						$("#qch").toggle();
-						
-						
 					});
 					$("#math").click(function () {
 						$("#qmath").toggle();
-						
-						
 					});
 					$("#en").click(function () {
 						$("#qen").toggle();
-						
-						
 					});
 					$("#phy").click(function () {
 						$("#qphy").toggle();
-						
-						
 					});
 					$("#che").click(function () {
 						$("#qche").toggle();
-						
-						
 					});
 					$("#ges").click(function () {
 						$("#qges").toggle();
@@ -120,26 +126,18 @@
 					
 					$("#bio").click(function () {
 						$("#qbio").toggle();
-						
-						
 					});
 					
 					$("#geo").click(function () {
 						$("#qgeo").toggle();
-						
-						
 					});
 					
 					$("#his").click(function () {
 						$("#qhis").toggle();
-						
-						
 					});
 					
 					$("#soc").click(function () {
 						$("#qsoc").toggle();
-						
-						
 					});
 					
 					$window.onload = function(){
