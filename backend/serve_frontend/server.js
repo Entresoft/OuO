@@ -31,3 +31,6 @@ app.get('/user/forgotpw', function(req, res){
 app.get('/login', function(req, res){
 	res.sendFile('../frontend/login/login.html');
 });
+app.get('/user/:id', function(req, res){
+	res.sendFile('../frontend/profile.html');
+});

@@ -21,128 +21,142 @@
 			<link rel="stylesheet" href="css/skel1.css" />
 			<link rel="stylesheet" href="css/style1.css" />
 			<link rel="stylesheet" href="css/style-xlarge1.css" />
-
 		</noscript>
 	</head>
 	<body id="top">
-
+		
 		<!-- Header -->
-			<header id="header" class="skel-layers-fixed">
-				<h1><a href="#">WISE</a></h1>
-				<nav id="nav">
-					<ul>
-						
-						<li><a href="main-single.html">回主頁</a></li>
-						
-						<li><a href="logout.html" >Log Out</a></li>
-					</ul>
-				</nav>
-			</header>
-			
-		<!-- Main -->
-			<section id="main" class="wrapper style1">
-				
-				<header class="major">
-					<h2>User Profile</h2>
-					<p>Beta</p>
-					<!--<h2>模式選擇</h2>
-					<p>選擇自己想要的模式</p> -->
-				</header>
-				<div class="container">
+		<header id="header" class="skel-layers-fixed">
+			<h1><a href="#">WISE</a></h1>
+			<nav id="nav">
+				<ul>
 					
-           <section>
-<form></form>
+					<li><a href="main-single.html">回主頁</a></li>
+					
+					<li><a href="logout.html" >Log Out</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<!-- Main -->
+		<section id="main" class="wrapper style1">
+			
+			<header class="major">
+				<h2>User Profile</h2>
+				<p>Beta</p>
+				<!--<h2>模式選擇</h2>
+				<p>選擇自己想要的模式</p> -->
+			</header>
+			<div class="container">
+				
+				<section>
+					<form></form>
           
-           	
-           </section>
-            <!--<a href="#" class="image fit">-->
+					
+				</section>
+				<!--<a href="#" class="image fit">-->
 				<div id="question">
 					
 				</div>
 				<div class="button1"></div>
 				
-				 <section>
-				 
-
-             
-
-<script src='https://www.google.com/recaptcha/api.js'></script>
-<div class="g-recaptcha" data-sitekey="6Ld7yBMTAAAAAPfy0UHf5bN_YA4PbNGFCH06Yg0z"></div>
-</section>	
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script> $("#ch").click(function () {
-	$("#qch").toggle();
-    
-
-});
-  </script> 
-  <script> $("#math").click(function () {
-	$("#qmath").toggle();
-    
-
-});
-  </script> 	
-  <script> $("#en").click(function () {
-	$("#qen").toggle();
-    
-
-});
-  </script> 	
-  <script> $("#phy").click(function () {
-	$("#qphy").toggle();
-    
-
-});
-  </script> 	
-  <script> $("#che").click(function () {
-	$("#qche").toggle();
-    
-
-});
-  </script> 	
-  <script> $("#ges").click(function () {
-	$("#qges").toggle();
-});
-  </script> 	
-  <script> $("#bio").click(function () {
-	$("#qbio").toggle();
-    
-
-});
-  </script> 	
-  <script> $("#geo").click(function () {
-	$("#qgeo").toggle();
-    
-
-});
-  </script> 	
-  <script> $("#his").click(function () {
-	$("#qhis").toggle();
-    
-
-});
-  </script> 	
-  <script> $("#soc").click(function () {
-	$("#qsoc").toggle();
-    
-
-});
-  </script> 	
- 	
- 	
-  <script type="text/javascript">$window.onload = function(){
-    function offset() $.ajax({
-                    url: "api/problems",
-                    type: "get",
-                    data: JSON.stringify(array),
-                    success: function (data) {
-                        document.write(data);
-                    }
-                });
-           </script>	
+				<section>
 					
-
 					
-<script id="keyreply-script" src="//keyreply.com/chat/widget.js" data-align="right" data-color="#E4392B" data-apps="JTdCJTIybGluZSUyMjolMjJodHRwOi8vbGluZS5tZS90aS9wL1NJc2Z3SUJwN2IlMjIsJTIydHdpdHRlciUyMjolMjJAczk1MDQ0OSUyMiwlMjJmYWNlYm9vayUyMjolMjJTaW5jbGFpcmVDaGVuZyUyMiwlMjJlbWFpbCUyMjolMjJzOTUwNDQ5QHByb3Rvbm1haWwuY2olMjIlN0Q="></script>
-	</body>
-</html>
+					
+					
+					<script src='https://www.google.com/recaptcha/api.js'></script>
+					<!--<div class="g-recaptcha" data-sitekey="6Ld7yBMTAAAAAPfy0UHf5bN_YA4PbNGFCH06Yg0z"></div>-->
+				</section>	
+				<script src="http://code.jquery.com/jquery-latest.js"></script>
+				<script>
+				var domain = "xueba.entresoft.org";
+				var id = location.pathname.match(/\/[^\/]*$/gi).replace(/^\//gi, '');
+				$.ajax({
+					type: 'GET',
+					url: domain+"/users/"+id,
+					error: function(xhr){
+						console.log('request error');
+					},
+					success: function(res){
+						if(!res['message']){
+							var email = res['email']
+							var AC = res['AC']	
+							var WA = res['WA']
+							var nickname = res['nickname']
+							
+						}
+					}
+					
+				})
+					$("#ch").click(function () {
+						$("#qch").toggle();
+						
+						
+					});
+					$("#math").click(function () {
+						$("#qmath").toggle();
+						
+						
+					});
+					$("#en").click(function () {
+						$("#qen").toggle();
+						
+						
+					});
+					$("#phy").click(function () {
+						$("#qphy").toggle();
+						
+						
+					});
+					$("#che").click(function () {
+						$("#qche").toggle();
+						
+						
+					});
+					$("#ges").click(function () {
+						$("#qges").toggle();
+					});
+					
+					$("#bio").click(function () {
+						$("#qbio").toggle();
+						
+						
+					});
+					
+					$("#geo").click(function () {
+						$("#qgeo").toggle();
+						
+						
+					});
+					
+					$("#his").click(function () {
+						$("#qhis").toggle();
+						
+						
+					});
+					
+					$("#soc").click(function () {
+						$("#qsoc").toggle();
+						
+						
+					});
+					
+					$window.onload = function(){
+						$.ajax({
+							url: "api/problems",
+							type: "get",
+							data: JSON.stringify(array),
+							success: function (data) {
+								document.write(data);
+							}
+						});
+					</script>	
+					
+					
+					
+				<!--<script id="keyreply-script" src="//keyreply.com/chat/widget.js" data-align="right" data-color="#E4392B" data-apps="JTdCJTIybGluZSUyMjolMjJodHRwOi8vbGluZS5tZS90aS9wL1NJc2Z3SUJwN2IlMjIsJTIydHdpdHRlciUyMjolMjJAczk1MDQ0OSUyMiwlMjJmYWNlYm9vayUyMjolMjJTaW5jbGFpcmVDaGVuZyUyMiwlMjJlbWFpbCUyMjolMjJzOTUwNDQ5QHByb3Rvbm1haWwuY2olMjIlN0Q="></script>
+				-->
+				</body>
+			</html>
+				
