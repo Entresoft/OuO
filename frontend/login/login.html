@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html >
 	<head>
+		<!-- TocasUI -->
+		<link rel="stylesheet" href="http://cdn.rawgit.com/TeaMeow/TocasUI/master/dist/tocas.min.css">
+		
 		<meta charset="UTF-8">
 		<title>Login/Sign-In</title>
 		<meta content="text/html; charset=Big5" http-equiv="'application/json'">
@@ -11,15 +14,19 @@
 		
 		<link rel="stylesheet" href="css/loginstyle.css">
 		
-		<script type="text/javascript" src="json2.js"></script>
+		<!--<script type="text/javascript" src="json2.js"></script>-->
 		
-		<script src="js/jquery.js" type="text/javascript"></script>
+		<script src="js/jquery.min.js" type="text/javascript"></script>
 		<script src="js/login.js" type="sha512"></script> 
 		
 	</head>
 	
 	<body>
-		
+		<div class="ts full page raised jumbotron" id="infor" style="z-index: 100">
+			<h2 class="ts header" id="infor-title">Title
+				<div class="sub header" id="infor-infor">infor</div>
+			</h2>
+		</div>
 		<div class="logmod">
 			<div class="logmod__wrapper">
 				<span class="logmod__close">關閉</span>
@@ -67,28 +74,30 @@
 										<!--<span class="simform__actions-sidetext">在註冊之前請先同意我們的 <a class="special" href="#" target="_blank" role="link">隱私與使用條款</a></span>-->
 									</div> 
 								</form>
-							</div> 
-							<div class="logmod__alter">
-								<div class="logmod__alter-container">
-									<a href="#" class="connect facebook">
-										<div class="connect__icon">
-											<i class="fa fa-facebook"></i>
-										</div>
-										<div class="connect__context">
-											<span>以 <strong>Facebook</strong>註冊帳戶</span>
-										</div>
-									</a>
-									
-									<a href="#" class="connect googleplus">
-										<div class="connect__icon">
-											<i class="fa fa-google-plus"></i>
-										</div>
-										<div class="connect__context">
-											<span>以 <strong>Google+</strong>註冊帳戶</span>
-										</div>
-									</a>
-								</div>
 							</div>
+							<!--
+								<div class="logmod__alter">
+								<div class="logmod__alter-container">
+								<a href="#" class="connect facebook">
+								<div class="connect__icon">
+								<i class="fa fa-facebook"></i>
+								</div>
+								<div class="connect__context">
+								<span>以 <strong>Facebook</strong>註冊帳戶</span>
+								</div>
+								</a>
+								
+								<a href="#" class="connect googleplus">
+								<div class="connect__icon">
+								<i class="fa fa-google-plus"></i>
+								</div>
+								<div class="connect__context">
+								<span>以 <strong>Google+</strong>註冊帳戶</span>
+								</div>
+								</a>
+								</div>
+								</div>
+							-->
 						</div>
 						<div class="logmod__tab lgm-2">
 							<div class="logmod__heading">
@@ -122,27 +131,29 @@
 											<span class="simform__actions-sidetext"><a class="special" role="link" href="../user/forgotpw.html">忘記密碼?<br>請點這裡</a></span>-->
 										</div> 
 									</form>
-								</div> 
-								<div class="logmod__alter">
-									<div class="logmod__alter-container">
-										<a href="#" class="connect facebook">
-											<div class="connect__icon">
-												<i class="fa fa-facebook"></i>
-											</div>
-											<div class="connect__context">
-												<span>使用 <strong>Facebook</strong>登入</span>
-											</div>
-										</a>
-										<a href="#" class="connect googleplus">
-											<div class="connect__icon">
-												<i class="fa fa-google-plus"></i>
-											</div>
-											<div class="connect__context">
-												<span>使用 <strong>Google+</strong>登入</span>
-											</div>
-										</a>
-									</div>
 								</div>
+								<!--
+									<div class="logmod__alter">
+									<div class="logmod__alter-container">
+									<a href="#" class="connect facebook">
+									<div class="connect__icon">
+									<i class="fa fa-facebook"></i>
+									</div>
+									<div class="connect__context">
+									<span>使用 <strong>Facebook</strong>登入</span>
+									</div>
+									</a>
+									<a href="#" class="connect googleplus">
+									<div class="connect__icon">
+									<i class="fa fa-google-plus"></i>
+									</div>
+									<div class="connect__context">
+									<span>使用 <strong>Google+</strong>登入</span>
+									</div>
+									</a>
+									</div>
+									</div>
+								-->
 							</div>
 						</div>
 					</div>
@@ -157,47 +168,68 @@
 				var domain = "xueba.entresoft.org";
 				function login(){
 					var userpw=$("#user-pw").val();
-					var user-email=$("#user-email").val();
-					$.ajax({ 
+					var user_email=$("#user-email").val();
+					$.ajax({
 						type: "POST", 
 						url: domain+"/login", 
 						dataType: "json", 
-						data: {"email":user-email, "password": user-pw},
+						data: {"email":user_email, "password": user-pw},
 						success: function(res){
 							if(!res['message'])
-							alert-animation();
+							alert_animation('!', '登入成功');
 						},
 						error: function(xhr){
 							console.log('login error');
 						}
-					}
+					})
 				}
 				function register(){
 					var userpw=$("#user-pw").val();
 					var nickname=$("#nickname").val();
-					var user-email=$("#user-email").val();
-					var user-pw-repeat=$("#user-pw-repeat").val();
-					if(userpw!=user-pw-repeat){
-						alert-animation("密碼輸入錯誤");
+					var user_email=$("#user-email").val();
+					var user_pw_repeat=$("#user-pw-repeat").val();
+					if(userpw!=user_pw_repeat){
+						alert_animation("密碼輸入錯誤");
 					}
 					$.ajax({
 						type: 'POST',
 						url: domain+'/register',
 						dataType: 'json',
-						data: {email: user-email, password: user-pw, nickname: nickname},
+						data: {email: user_email, password: user-pw, nickname: nickname},
 						error: function(xhr){
 							console.log('register error');
 						},
 						success: function(res){
 							if(!res['message']){
-								alert-animation();
+								alert_animation('!', '註冊成功');
 							}
 						}
 					})
 				}
-				function alert-animation(msg, options){
-					
+				function alert_animation(title, msg){
+					$('#infor-title').html(title+'<div class="sub header" id="infor-infor">infor</div>')
+					$('#infor-infor').text(msg)
+					$('#infor').show()
+					setTimeout(function(){
+						$('#infor').hide();
+					} ,5000)
 				}
+				function addonloadevent(f){
+					var old = window.onload;
+					if(typeof window.onload !== 'function'){
+						window.onload = f;
+						}else{
+						window.onload = function(){
+							if(old){
+								old();
+							}
+							f();
+						}
+					}
+				}
+				addonloadevent(function(){
+					$('#infor').hide();
+				})
 			</script>
 			
 		</body>
