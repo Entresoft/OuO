@@ -6,8 +6,9 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var arr_equal = require('array-equal');
-var postMethod = require('postMethod.js');
+var postMethod = require('postMethod');
 var getMethod = require('getMethod');
+var getProblems = require('getProblems');
 var tagPostMethod = require('tagPostMethod');
 var profileMethod = require('profileMethod');
 var app = express();
@@ -27,6 +28,10 @@ Db.connect(function(){
 //these two method use Questions db.
 app.get('/api/problems', function(req, res){
   getMethod(req, res, Db.db.collection('Questions'));
+});
+
+app.get('/api/problems/all', function(req, res){
+  getProblems(req, res, Db.db.collection('Questions'));
 });
 
 app.get('/users/:id', function(req, res){
