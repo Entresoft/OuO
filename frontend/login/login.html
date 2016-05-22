@@ -17,12 +17,12 @@
 		<!--<script type="text/javascript" src="json2.js"></script>-->
 		
 		<script src="js/jquery.min.js" type="text/javascript"></script>
-		<script src="js/login.js" type="sha512"></script> 
+		<script src="js/sha512.js" type="text/javascript"></script>
 		
 	</head>
 	
 	<body>
-		<div class="ts full page raised jumbotron" id="infor" style="z-index: 100">
+		<div class="ts primary raised jumbotron" id="infor" style="z-index: 100">
 			<h2 class="ts header" id="infor-title">Title
 				<div class="sub header" id="infor-infor">infor</div>
 			</h2>
@@ -168,12 +168,13 @@
 				var domain = "xueba.entresoft.org";
 				function login(){
 					var userpw=$("#user-pw").val();
+					userpw = CryptoJS.SHA512(userpw);
 					var user_email=$("#user-email").val();
 					$.ajax({
 						type: "POST", 
 						url: domain+"/login", 
 						dataType: "json", 
-						data: {"email":user_email, "password": user-pw},
+						data: {"email":user_email, "password": userpw},
 						success: function(res){
 							if(!res['message'])
 							alert_animation('!', '登入成功');
@@ -191,11 +192,12 @@
 					if(userpw!=user_pw_repeat){
 						alert_animation("密碼輸入錯誤");
 					}
+					userpw = CryptoJS.SHA512(userpw);
 					$.ajax({
 						type: 'POST',
 						url: domain+'/register',
 						dataType: 'json',
-						data: {email: user_email, password: user-pw, nickname: nickname},
+						data: {email: user_email, password: userpw, nickname: nickname},
 						error: function(xhr){
 							console.log('register error');
 						},
