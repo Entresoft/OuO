@@ -28,49 +28,28 @@
 
 		<!-- Header -->
 			<header id="header" class="skel-layers-fixed">
-				<h1><a href="#">WISE</a></h1>
+				<h1><a href="">WISE</a></h1>
 				<nav id="nav">
 					<ul>
 						
 						<li><a href="settings.html">修改密碼</a></li>
 						<li><a href="profile.html">帳戶資訊</a></li>
-
-						<!-- <p7>  <h4>  <div class="simform__actions"></div>
-             
-             <li><a href="#國文" class="button special">國文</a></li></h4></p7>
-              <p7>  <h4>  <div class="simform__actions"></div>
-             <li><a href="#數學" class="button special">數學</a></li></h4></p7>
-                 <p7>  <h4>  <div class="simform__actions"></div>
-             <li><a href="#英文" class="button special">英文</a></li></h4></p7>
-                <p7>  <h4>  <div class="simform__actions"></div>
-             <li><a href="#物理" class="button special">物理</a></li></h4></p7>
-               <p7>  <h4>  <div class="simform__actions"></div>
-             <li><a href="#化學" class="button special">化學</a></li></h4></p7>
-               <p7>  <h4>  <div class="simform__actions"></div>
-             <li><a href="#生物" class="button special">生物</a></li></h4></p7>
-                <p7>  <h4>  <div class="simform__actions"></div>
-             <li><a href="#地科" class="button special">地科</a></li></h4></p7>
-              <p7>  <h4>  <div class="simform__actions"></div>
-             <li><a href="#地理" class="button special">地理</a></li></h4></p7>
-              <p7>  <h4>  <div class="simform__actions"></div>
-             <li><a href="#歷史" class="button special">歷史</a></li></h4></p7>
-              <p7>  <h4>  <div class="simform__actions"></div>
-             <li><a href="#公民" class="button special">公民</a></li></h4></p7>-->
-						<input type="button" id="ch" value="國文">
-						<input type="button" id="math"value="數學">
-						<input type="button" id="en" value="英文">
-						<input type="button" id="phy"value="物理">
-						<input type="button" id="che"value="化學">
-						<input type="button" id="bio"value="生物">
-						<input type="button" id="ges"value="地科">
-						<input type="button" id="geo"value="地理">
-						<input type="button" id="his"value="歷史">
-						<input type="button" id="soc"value="公民">
+						<li><a href="?q=">All</a></li>
+						<li><a href="?q=ch">國文</a></li>
+						<li><a href="?q=math">數學</a></li>
+						<li><a href="?q=en">英文</a></li>
+						<li><a href="?q=phy">物理</a></li>
+						<li><a href="?q=che">化學</a> </li>
+						<li><a href="?q=bio">生物</a> </li>
+						<li><a href="?q=ges">地科</a></li>
+						<li><a href="?q=geo">地理</a></li>
+						<li><a href="?q=his">歷史</a></li>
+						<li><a href="?q=soc">公民</a></li>
 						<li><a href="logout.html" >Log Out</a></li>
-					</ul>
+						</ul>
 				</nav>
 			</header>
-			
+			<script type="text/javascript">req.query.q</script>
 		<!-- Main -->
 			<section id="main" class="wrapper style1">
 				
@@ -86,24 +65,28 @@
 						 
 						 <div class="sminputs">
               <div class="input full">
-						 <input class="string optional" maxlength="255" id="search" placeholder="請輸入題目類型" type="Text" size="60"  />
+						 <input class="string optional" maxlength="255" id="search" placeholder="請輸入題目類型" type="Text" size="60"/>
+					<script type="text/javascript"></script>
 					</div>
 				
             </div>
 	</section>
            <section>
-<form></form>
+
+<form>
            <script>
+				
 				var list=$("#list")
 				$.ajax({
-					url:"problems",
-					data:"{id,title,content,options[]}"
+					url:"problems/",
+					data:"[{id,title,content,options}]"
 					success:function (data) {
                         				document.write(data);},
 					datatype:"JSON",
 					type:"get",
 					)}
-			</script>
+			</script></form>
+
 
            	
            </section>
@@ -112,7 +95,7 @@
 					
 				</div>
 				<div class="button1"></div>
-				
+				<section></section>
 				 <section>
 				 
 
