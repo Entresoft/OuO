@@ -32,8 +32,14 @@ app.get('/user/forgotpw', function(req, res){
 app.get('/login', function(req, res){
 	res.sendFile(path.resolve(__dirname+'/../../frontend/login/login.html'));
 });
+app.get('/register', function(req, res){
+	res.sendFile(path.resolve(__dirname+'/../../frontend/login/login.html'));
+});
 app.get('/user/:id', function(req, res){
 	res.sendFile(path.resolve(__dirname+'/../../frontend/profile.html'));
+});
+app.get('/problem/:id', function(req, res){
+	res.sendFile(path.resolve(__dirname+'/../../frontend/problem.html'));
 });
 app.use(express.static(path.resolve(__dirname+'/../../frontend')));
 app.use(express.static(path.resolve(__dirname+'/../../frontend/login')));

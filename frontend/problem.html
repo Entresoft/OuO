@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" href="http://cdn.rawgit.com/TeaMeow/TocasUI/master/dist/tocas.min.css">
+	<script src="js/jquery.min.js" type="text/javascript"></script>
+	<script src="js/bbcode/bbcodeParser.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<h1 id="title">Title</h1>
+	<div id="tagList"></div>
+	<div id="pic"></div>
+	<div id="content">content</div>
+
+</body>
+<script>
+bbcodeParser.addBBCode('[tex]{TEXT}[/tex]', '<img src="http://chart.googleapis.com/chart?cht=tx&chl={TEXT}" />')
+
+var domain = "xueba.entresoft.org";
+var num = location.pathname.match(/\/[^\/]*$/gi)[0].replace(/^\//gi, '');
+$.ajax({
+	type: "GET",
+	url: domain+"/api/problems",
+	dataType: "json",
+	data: {"num": num},
+	success: function(res){
+		if(!res['message'])
+		$('#title').text(res.title)
+		res['tag'].forEach(function(element){
+			$('tagList').append('<div class="tag">'+element+'</div>')
+		})
+		$('#pic').attr('src', res.pic)
+		res.content = bbcodeParser.bbcodeToHtml(res.content)
+		$('content').html(res.content)
+	},
+	error: function(xhr){
+		console.log('error');
+	}
+})
+</script>
+
+</html>
