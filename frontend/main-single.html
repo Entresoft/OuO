@@ -21,163 +21,118 @@
 			<link rel="stylesheet" href="css/skel1.css" />
 			<link rel="stylesheet" href="css/style1.css" />
 			<link rel="stylesheet" href="css/style-xlarge1.css" />
-
+			
 		</noscript>
 	</head>
 	<body id="top">
-
+		
 		<!-- Header -->
-			<header id="header" class="skel-layers-fixed">
-				<h1><a href="">WISE</a></h1>
-				<nav id="nav">
-					<ul>
-						
-						<li><a href="settings.html">修改密碼</a></li>
-						<li><a href="profile.html">帳戶資訊</a></li>
-						<li><a href="?q=">All</a></li>
-						<li><a href="?q=ch">國文</a></li>
-						<li><a href="?q=math">數學</a></li>
-						<li><a href="?q=en">英文</a></li>
-						<li><a href="?q=phy">物理</a></li>
-						<li><a href="?q=che">化學</a> </li>
-						<li><a href="?q=bio">生物</a> </li>
-						<li><a href="?q=ges">地科</a></li>
-						<li><a href="?q=geo">地理</a></li>
-						<li><a href="?q=his">歷史</a></li>
-						<li><a href="?q=soc">公民</a></li>
-						<li><a href="logout.html" >Log Out</a></li>
-						</ul>
-				</nav>
-			</header>
-			<script type="text/javascript">req.query.q</script>
+		<header id="header" class="skel-layers-fixed">
+			<h1><a href="">WISE</a></h1>
+			<nav id="nav">
+				<ul>
+					
+					<li><a href="settings.html">修改密碼</a></li>
+					<li><a href="profile.html">帳戶資訊</a></li>
+					<li><a href="?q=">All</a></li>
+					<li><a href="?q=ch">國文</a></li>
+					<li><a href="?q=math">數學</a></li>
+					<li><a href="?q=en">英文</a></li>
+					<li><a href="?q=phy">物理</a></li>
+					<li><a href="?q=che">化學</a> </li>
+					<li><a href="?q=bio">生物</a> </li>
+					<li><a href="?q=ges">地科</a></li>
+					<li><a href="?q=geo">地理</a></li>
+					<li><a href="?q=his">歷史</a></li>
+					<li><a href="?q=soc">公民</a></li>
+					<li><a href="logout.html" >Log Out</a></li>
+				</ul>
+			</nav>
+		</header>
+		<script type="text/javascript">req.query.q</script>
 		<!-- Main -->
-			<section id="main" class="wrapper style1">
-				
-				<header class="major">
-					<h2>單人模式</h2>
-					<p>Beta版本僅有建中段考題，請按上面按鈕來選擇題目類型</p>
-					<!--<h2>模式選擇</h2>
-					<p>選擇自己想要的模式</p> -->
-				</header>
-				<div class="container">
-					<section>
-						<h2>輸入題目類型</h2>           
-						 
-						 <div class="sminputs">
-              <div class="input full">
-						 <input class="string optional" maxlength="255" id="search" placeholder="請輸入題目類型" type="Text" size="60"/>
-					<script type="text/javascript"></script>
+		<section id="main" class="wrapper style1">
+			
+			<header class="major">
+				<h2>單人模式</h2>
+				<p>Beta版本僅有建中段考題，請按上面按鈕來選擇題目類型</p>
+				<!--<h2>模式選擇</h2>
+				<p>選擇自己想要的模式</p> -->
+			</header>
+			<div class="container">
+				<section>
+					<h2>輸入題目類型</h2>           
+					
+					<div class="sminputs">
+						<div class="input full">
+							<input class="string optional" maxlength="255" id="search" placeholder="請輸入題目類型" type="Text" size="60"/>
+							<script type="text/javascript"></script>
+						</div>
+						
 					</div>
-				
-            </div>
-	</section>
-           <section>
-
-<form>
-           <script>
-				
-				var list=$("#list")
-				$.ajax({
-					url:"problems/",
-					data:"[{id,title,content,options}]"
-					success:function (data) {
-                        				document.write(data);},
-					datatype:"JSON",
-					type:"get",
-					)}
-			</script></form>
-
-
-           	
-           </section>
-            <!--<a href="#" class="image fit">-->
+				</section>
+				<!--<a href="#" class="image fit">-->
 				<div id="question">
 					
 				</div>
 				<div class="button1"></div>
 				<section></section>
-				 <section>
-				 
-
-             
-
-<script src='https://www.google.com/recaptcha/api.js'></script>
-<div class="g-recaptcha" data-sitekey="6Ld7yBMTAAAAAPfy0UHf5bN_YA4PbNGFCH06Yg0z"></div>
-</section>	
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script> $("#ch").click(function () {
-	$("#qch").toggle();
-    
-
-});
-  </script> 
-  <script> $("#math").click(function () {
-	$("#qmath").toggle();
-    
-
-});
-  </script> 	
-  <script> $("#en").click(function () {
-	$("#qen").toggle();
-    
-
-});
-  </script> 	
-  <script> $("#phy").click(function () {
-	$("#qphy").toggle();
-    
-
-});
-  </script> 	
-  <script> $("#che").click(function () {
-	$("#qche").toggle();
-    
-
-});
-  </script> 	
-  <script> $("#ges").click(function () {
-	$("#qges").toggle();
-});
-  </script> 	
-  <script> $("#bio").click(function () {
-	$("#qbio").toggle();
-    
-
-});
-  </script> 	
-  <script> $("#geo").click(function () {
-	$("#qgeo").toggle();
-    
-
-});
-  </script> 	
-  <script> $("#his").click(function () {
-	$("#qhis").toggle();
-    
-
-});
-  </script> 	
-  <script> $("#soc").click(function () {
-	$("#qsoc").toggle();
-    
-
-});
-  </script> 	
- 	
- 	
-  <script type="text/javascript">$window.onload = function(){
-    function offset() $.ajax({
-                    url: "api/problems",
-                    type: "get",
-                    data: JSON.stringify(array),
-                    success: function (data) {
-                        document.write(data);
-                    }
-                });
-           </script>	
+				<section>
 					
-
 					
-<script id="keyreply-script" src="//keyreply.com/chat/widget.js" data-align="right" data-color="#E4392B" data-apps="JTdCJTIybGluZSUyMjolMjJodHRwOi8vbGluZS5tZS90aS9wL1NJc2Z3SUJwN2IlMjIsJTIydHdpdHRlciUyMjolMjJAczk1MDQ0OSUyMiwlMjJmYWNlYm9vayUyMjolMjJTaW5jbGFpcmVDaGVuZyUyMiwlMjJlbWFpbCUyMjolMjJzOTUwNDQ5QHByb3Rvbm1haWwuY2olMjIlN0Q="></script>
-	</body>
-</html>
+					
+					
+					<script src='https://www.google.com/recaptcha/api.js'></script>
+					<div class="g-recaptcha" data-sitekey="6Ld7yBMTAAAAAPfy0UHf5bN_YA4PbNGFCH06Yg0z"></div>
+				</section>	
+				<script src="http://code.jquery.com/jquery-latest.js"></script>
+				<script>
+					var q = parse('q')
+					function parse(val) {
+						var result = undefined,
+						tmp = [];
+						location.search
+						//.replace ( "?", "" ) 
+						// this is better, there might be a question mark inside
+						.substr(1)
+						.split("&")
+						.forEach(function (item) {
+							tmp = item.split("=");
+							if (tmp[0] === val) result = decodeURIComponent(tmp[1]);
+						});
+						return result;
+					}
+					if(q === undefined){
+						$.ajax({
+						type: 'GET',
+						url: domain+'/api/problems/all',
+						dataType: 'json',
+						error: function(xhr){
+							console.log('error');
+						},
+						success: function(res){
+							if(!res['message']){
+								console.log("work")
+								res.forEach(function(element){
+									$('question').append('<div class="Q">'+element['id']+'</div>')
+								})
+							}
+						}
+					})
+					}
+				</script>	
+				<style>
+					.Q {
+					margin: 1.5em;
+					border: 1em solid #ffe4e1;
+					border-radius: 1.5em;
+					display: inline-block;
+					background-color: #ffe4e1;
+					}
+				</style>
+				
+				
+				<script id="keyreply-script" src="//keyreply.com/chat/widget.js" data-align="right" data-color="#E4392B" data-apps="JTdCJTIybGluZSUyMjolMjJodHRwOi8vbGluZS5tZS90aS9wL1NJc2Z3SUJwN2IlMjIsJTIydHdpdHRlciUyMjolMjJAczk1MDQ0OSUyMiwlMjJmYWNlYm9vayUyMjolMjJTaW5jbGFpcmVDaGVuZyUyMiwlMjJlbWFpbCUyMjolMjJzOTUwNDQ5QHByb3Rvbm1haWwuY2olMjIlN0Q="></script>
+			</body>
+		</html>
+		
