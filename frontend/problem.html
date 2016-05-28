@@ -31,6 +31,7 @@ $.ajax({
 			$('tagList').append('<div class="tag">'+element+'</div>')
 		})
 		$('#pic').attr('src', res.pic)
+		res.content = escape(res.content)
 		res.content = bbcodeParser.bbcodeToHtml(res.content)
 		$('content').html(res.content)
 	},
