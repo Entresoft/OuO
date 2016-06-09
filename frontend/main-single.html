@@ -16,6 +16,7 @@ Released for free under the Creative Commons Attribution 3.0 license (templated.
 	<script src="js/skel-layers.min.js"></script>
 	<script src="js/init.js"></script>
 	<script src="js/widget.js"></script>
+	<script src="config.js"></script>
 	<!--<script src="js/ajax.js" ></script>-->
 	<noscript>
 		<link rel="stylesheet" href="css/skel1.css" />
@@ -49,7 +50,6 @@ Released for free under the Creative Commons Attribution 3.0 license (templated.
 			</ul>
 		</nav>
 	</header>
-	<script type="text/javascript">req.query.q</script>
 	<!-- Main -->
 	<section id="main" class="wrapper style1">
 
@@ -83,9 +83,10 @@ Released for free under the Creative Commons Attribution 3.0 license (templated.
 
 
 				<script src='https://www.google.com/recaptcha/api.js'></script>
-				<div class="g-recaptcha" data-sitekey="6Ld7yBMTAAAAAPfy0UHf5bN_YA4PbNGFCH06Yg0z"></div>
+				<div class="g-recaptcha" data-sitekey="6LdMzRsTAAAAAGvOX4dSmeT5y0L15FnSwcyVSLyU"></div>
 			</section>
 			<script src="http://code.jquery.com/jquery-latest.js"></script>
+
 			<script>
 			var q = parse('q')
 			function parse(val){
@@ -108,7 +109,7 @@ Released for free under the Creative Commons Attribution 3.0 license (templated.
 					url: domain+'/api/problems/all',
 					dataType: 'json',
 					error: function(xhr){
-						console.log('error');
+						console.log(xhr);
 					},
 					success: function(res){
 						if(!res['message']){
@@ -151,6 +152,6 @@ Released for free under the Creative Commons Attribution 3.0 license (templated.
 			</style>
 
 
-			<script id="keyreply-script" src="//keyreply.com/chat/widget.js" data-align="right" data-color="#E4392B" data-apps="JTdCJTIybGluZSUyMjolMjJodHRwOi8vbGluZS5tZS90aS9wL1NJc2Z3SUJwN2IlMjIsJTIydHdpdHRlciUyMjolMjJAczk1MDQ0OSUyMiwlMjJmYWNlYm9vayUyMjolMjJTaW5jbGFpcmVDaGVuZyUyMiwlMjJlbWFpbCUyMjolMjJzOTUwNDQ5QHByb3Rvbm1haWwuY2olMjIlN0Q="></script>
+<script data-align="right" data-overlay="false" id="keyreply-script" src="//keyreply.com/chat/widget.js" data-color="#E4392B" data-apps="JTdCJTIyZW1haWwlMjI6JTIyeHVlYmFAaW5mb3Iub3JnJTIyJTdE"></script>
 		</body>
 		</html>
