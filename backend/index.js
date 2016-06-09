@@ -13,15 +13,20 @@ var tagPostMethod = require('tagPostMethod');
 var profileMethod = require('profileMethod');
 var app = express();
 var Db = require('Database');
-var cors = require('cors');
 var regist = require('regist');
-var corsOption = config.corsOption;
+var allowCrossDomain = function(req, res, next) {
+	res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,POST');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+}
 
 app.use(bodyParser.json({type: "application/json"}));
 app.use(cookieParser());
+app.use(allowCrossDomain);
 
 Db.connect(function(){
-  app.listen(3000);
+  app.listen(5005);
 });
 
 //Because I give it wrong parameter before, and I don' want to change it. So I use this code...
