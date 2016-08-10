@@ -26,9 +26,6 @@ app.get('/news', function(req, res){
 app.get('/settings', function(req, res){
 	res.sendFile(path.resolve(__dirname+'/../../frontend/settings.html'));
 });
-app.get('/user/forgotpw', function(req, res){
-	res.sendFile(path.resolve(__dirname+'/../../frontend/user/forgotpw.html'));
-});
 app.get('/login', function(req, res){
 	res.sendFile(path.resolve(__dirname+'/../../frontend/login/login.html'));
 });
@@ -40,6 +37,9 @@ app.get('/user/:id', function(req, res){
 });
 app.get('/problem/:id', function(req, res){
 	res.sendFile(path.resolve(__dirname+'/../../frontend/problem.html'));
+});
+app.get('/passwd', function(req, res){
+	res.sendFile(path.resolve(__dirname+'/../../frontend/login/passwd.html'));
 });
 app.use(express.static(path.resolve(__dirname+'/../../frontend')));
 app.use(express.static(path.resolve(__dirname+'/../../frontend/login')));

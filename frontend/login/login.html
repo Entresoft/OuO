@@ -68,10 +68,10 @@
 									</div>
 									<div class="simform__actions">
 										<nav id="nav">
-											<input onclick="register()" class="sumbit" name="commit" type="sumbit" id="sign-up"value="註冊帳戶" />
+											<input onclick="register();" class="sumbit" name="commit" type="sumbit" id="sign-up"value="註冊帳戶" />
 										</nav>
 										
-										<!--<span class="simform__actions-sidetext">在註冊之前請先同意我們的 <a class="special" href="#" target="_blank" role="link">隱私與使用條款</a></span>-->
+										<div id="resend-button" class="ts info button" onclick="resend()">重寄驗證信</div>
 									</div> 
 								</form>
 							</div>
@@ -120,11 +120,10 @@
 									</div>
 									<div class="simform__actions">
 										<ul class="actions">
-											<li><a href="../main-single.html" class="button special"><input onclick="login()" class="sumbit" name="commit" type="sumbit" value="登入"   /></a>
-											</li>
+											<li><input onclick="login();" class="sumbit" name="commit" type="sumbit" value="登入"   /></li>
 											
-											<!-- <li><a href="main-single.html" class="button special"></a> </li> 
-											</ul></nav>-->  
+											<li><a href="/passwd" class="ts info button">重設密碼</a> </li> 
+											</ul><!--</nav>-->  
 											
 											<!--
 												
@@ -167,9 +166,9 @@
 	
 			<script type="text/javascript">
 				function login(){
-					var userpw=$("#user-pw").val();
-					userpw = CryptoJS.SHA512(userpw);
-					var user_email=$("#user-email").val();
+					var userpw=$("#user-pwx").val();
+					userpw = CryptoJS.SHA512(userpw).toString();
+					var user_email=$("#user-emailx").val();
 					$.ajax({
 						type: "POST", 
 						url: domain+"/login", 
@@ -177,12 +176,18 @@
 						data: {"email":user_email, "password": userpw},
 						success: function(res){
 							if(!res['message'])
-							alert_animation('!', '登入成功');
+								alert_animation('!', '登入成功');
+							else
+								alert_animation('登入失敗', res['message']);
 						},
 						error: function(xhr){
-							console.log('login error');
+							console.log(xhr);
+						},
+						xhrFields: {
+							withCredentials: true
 						}
 					})
+					window.href=domain+"/main-single"
 				}
 				function register(){
 					var userpw=$("#user-pw").val();
@@ -192,21 +197,47 @@
 					if(userpw!=user_pw_repeat){
 						alert_animation("密碼輸入錯誤");
 					}
-					userpw = CryptoJS.SHA512(userpw);
+					userpw = CryptoJS.SHA512(userpw).toString();
 					$.ajax({
 						type: 'POST',
 						url: domain+'/register',
 						dataType: 'json',
 						data: {email: user_email, password: userpw, nickname: nickname},
 						error: function(xhr){
-							console.log('register error');
+							console.log(xhr);
 						},
 						success: function(res){
 							if(!res['message']){
 								alert_animation('!', '註冊成功');
 							}
+							else{
+								alert_animation('註冊失敗', res['message']);
+							}
+						},	
+						xhrFields: {
+							//withCredentials: true
 						}
 					})
+				}
+				function resend(){
+					$.ajax({
+						type: "GET",
+						dataType: 'json',
+						url: domain+"/api/resend",
+						success: function(res){
+							if(!res['message']){
+								alert_animation('!', '重送成功')
+							}else{
+								alert_animation('重送失敗', res['message'])
+							}
+						},
+						error: function(xhr){
+							console.log(xhr);
+						},	
+						xhrFields: {
+							withCredentials: true
+						}
+					})	
 				}
 				function alert_animation(title, msg){
 					$('#infor-title').html(title+'<div class="sub header" id="infor-infor">infor</div>')
@@ -231,6 +262,22 @@
 				}
 				addonloadevent(function(){
 					$('#infor').hide();
+					$.ajax({
+						type: 'GET',
+						url: domain+'/api/is_valid',
+						success: function(res){
+							if(!res['message']){
+								if(res['valid']){
+									$('#resend-button').hide()
+								}
+							}else{
+								console.log(res['message'])
+							}
+						},
+						error: function(xhr){
+							console.log(xhr)
+						}
+					})
 				})
 			</script>
 			
