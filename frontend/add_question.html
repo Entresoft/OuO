@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="/js/jquery.min.js" type="text/javascript"></script>
+<link rel="stylesheet"
+	href="http://cdn.rawgit.com/TeaMeow/TocasUI/master/dist/tocas.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous">
+<script src="/config.js"></script>
+</head>
+<body>
+	Note! You needs to be admin to add question
+	<div id="form" style="margin: 10% 30%">
+		<div class="ts vertical inputs">
+			<div class="ts fluid input">
+				<input id="title" type="text" placeholder="Title">
+			</div>
+			<div class="ts fluid input">
+				<input id="content" type="text" placeholder="Content">
+			</div>
+			<div class="ts fluid input">
+				<input id="optionA" type="text" placeholder="OptionA">
+			</div>
+			<div class="ts fluid input">
+				<input id="optionB" type="text" placeholder="OptionB">
+			</div>
+			<div class="ts fluid input">
+				<input id="optionC" type="text" placeholder="OptionC">
+			</div>
+			<div class="ts fluid input">
+				<input id="optionD" type="text" placeholder="OptionD">
+			</div>
+			<div class="ts fluid input">
+				<input id="optionE" type="text" placeholder="OptionE">
+			</div>
+			<div class="ts fluid input">
+				<input id="answer" type="text"
+					placeholder="Answer (split with space) (A~E)">
+			</div>
+			<div class="ts fluid input">
+				<input id="solution" type="text" placeholder="Solution">
+			</div>
+			<div class="ts fluid input">
+				<input id="tag" type="text" placeholder="Tag (split with space)">
+			</div>
+			<div class="ts fluid input">
+				<input id="pic" type="text" placeholder="Pic (Url)">
+			</div>
+		</div>
+		<br />
+		<button id="submit" class="ts positive basic button" onclick="send()">Submit!</button>
+	</div>
+	<div id="some-info" class="panel panel-info">
+		<div class="panel-heading" id="p-h"></div>
+		<div class="panel-body" id="p-b"></div>
+	</div>
+</body>
+<script>
+	$('#some-info').hide();
+	$.ajax({
+		type: 'GET',
+		dataType: 'json',
+		url: domain + '/api/is_login',
+		success: function(res){
+			if(!res['login']){
+				$('#form').hide();
+				$('#some-info').show();
+				$('#p-h').text('!');
+				$('#p-b').text('You are not login!');
+			}
+		},
+		error: function(xhr){
+			console.log(xhr);
+		},
+		xhrFields: {
+			withCredentials: true
+		}
+	})
+	function send(){
+		var title = $('#title').val();
+		var content = $('#content').val();
+		var options = [];
+		options.push($('#optionA').val());
+		options.push($('#optionB').val());
+		options.push($('#optionC').val());
+		options.push($('#optionD').val());
+		options.push($('#optionE').val());
+		var answer = $('#answer').val().split(' ');
+		var solution = $('#solution').val();
+		var tag = $('#tag').val().split(' ');
+		var pic = $('#pic').val();
+		$.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: domain + '/dfjk/sdfjkl',
+			data: {
+				title: title,
+				content: content,
+				options: options,
+				answer: answer,
+				solution: solution,
+				tag: tag,
+				pic: pic
+			},
+			xhrFields: {
+				withCredentials: true
+			},
+			success: function(res){
+				if(!res['message']){
+					$('#some-info').show();
+					$('#p-h').text('Ok');
+					$('#p-b').text('done');
+				}else{
+					$('#some-info').show();
+					$('#p-h').text('!');
+					$('#p-b').text(res['message']);
+				}
+			},
+			error: function(xhr){
+				console.log(xhr);
+			}
+		})
+	}
+</script>
+</html>

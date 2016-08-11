@@ -41,5 +41,8 @@ app.get('/problem/:id', function(req, res){
 app.get('/passwd', function(req, res){
 	res.sendFile(path.resolve(__dirname+'/../../frontend/login/passwd.html'));
 });
+app.get('/dfjk/sdfjkl', function(req, res){
+	res.sendFile(path.resolve(__dirname+'/../../frontend/add_question.html'));
+});
 app.use(express.static(path.resolve(__dirname+'/../../frontend')));
 app.use(express.static(path.resolve(__dirname+'/../../frontend/login')));

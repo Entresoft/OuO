@@ -6,152 +6,151 @@ Released for free under the Creative Commons Attribution 3.0 license (templated.
 -->
 <html>
 <head>
-	<title>學霸養成器Beta By Entresoft</title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-	<!--[if lte IE 8]><script src="js/html5shiv.js"></script<![endif]-->
-	<script src="js/jquery.min.js"></script>>
-	<script src="js/skel.min.js"></script>
-	<script src="js/skel-layers.min.js"></script>
-	<script src="js/init.js"></script>
-	<script src="js/widget.js"></script>
-	<script src="config.js"></script>
-	<!--<script src="js/ajax.js" ></script>-->
-	<noscript>
+<style>
+.Q {
+	margin: 1.5em;
+	border: 1em solid #ffe4e1;
+	border-radius: 1.5em;
+	display: inline-block;
+	background-color: #ffe4e1;
+}
+</style>
+<title>學霸養成器Beta By Entresoft</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<!--[if lte IE 8]><script src="js/html5shiv.js"></script<![endif]-->
+<script src="js/skel.min.js"></script>
+<script src="js/skel-layers.min.js"></script>
+<script src="js/init.js"></script>
+<script src="js/widget.js"></script>
+<script src="config.js"></script>
+<!--<script src="js/ajax.js" ></script>-->
+<!--<noscript>
 		<link rel="stylesheet" href="css/skel1.css" />
 		<link rel="stylesheet" href="css/style1.css" />
 		<link rel="stylesheet" href="css/style-xlarge1.css" />
-
-	</noscript>
+	</noscript>-->
 </head>
 <body id="top">
 
 	<!-- Header -->
 	<header id="header" class="skel-layers-fixed">
-		<h1><a href="">WISE</a></h1>
 		<nav id="nav">
 			<ul>
-
-				<li><a href="settings.html">修改密碼</a></li>
-				<li><a href="profile.html">帳戶資訊</a></li>
 				<li><a href="?q=">All</a></li>
 				<li><a href="?q=ch">國文</a></li>
 				<li><a href="?q=math">數學</a></li>
 				<li><a href="?q=en">英文</a></li>
 				<li><a href="?q=phy">物理</a></li>
-				<li><a href="?q=che">化學</a> </li>
-				<li><a href="?q=bio">生物</a> </li>
+				<li><a href="?q=che">化學</a></li>
+				<li><a href="?q=bio">生物</a></li>
 				<li><a href="?q=ges">地科</a></li>
 				<li><a href="?q=geo">地理</a></li>
 				<li><a href="?q=his">歷史</a></li>
 				<li><a href="?q=soc">公民</a></li>
-				<li><a href="logout.html" >Log Out</a></li>
 			</ul>
 		</nav>
 	</header>
 	<!-- Main -->
-	<section id="main" class="wrapper style1">
-
-		<header class="major">
-			<h2>單人模式</h2>
-			<p>Beta版本僅有建中段考題，請按上面按鈕來選擇題目類型</p>
-			<!--<h2>模式選擇</h2>
+	<header class="major">
+		<h2>單人模式</h2>
+		<p>Beta版本僅有建中段考題，請按上面按鈕來選擇題目類型</p>
+		<!--<h2>模式選擇</h2>
 			<p>選擇自己想要的模式</p> -->
-		</header>
-		<div class="container">
-			<section>
-				<h2>輸入題目類型</h2>
+	</header>
+		<h2>輸入題目類型</h2>
 
-				<div class="sminputs">
-					<div class="input full">
-						<input class="string optional" maxlength="255" id="search" placeholder="請輸入題目類型" type="Text" size="60"/>
-						<script type="text/javascript"></script>
-					</div>
-
-				</div>
-			</section>
-			<!--<a href="#" class="image fit">-->
-			<div id="question">
-
+		<div class="sminputs">
+			<div class="input full">
+				<input class="string optional" maxlength="255" id="search"
+					placeholder="請輸入題目類型" type="Text" size="60" />
 			</div>
-			<div class="button1"></div>
-			<section></section>
-			<section>
+
+		</div>
+	<!--<a href="#" class="image fit">-->
+	<div id="question"></div>
+	<div class="button1"></div>
+
+	<!-- <script src='https://www.google.com/recaptcha/api.js'></script>
+				<div class="g-recaptcha" data-sitekey="6LfwKSITAAAAAFA58ueGtvDGqblnX_6kt1_ZkFoq"></div> -->
 
 
-
-
-				<script src='https://www.google.com/recaptcha/api.js'></script>
-				<div class="g-recaptcha" data-sitekey="6LfwKSITAAAAAFA58ueGtvDGqblnX_6kt1_ZkFoq"></div>
-			</section>
-			<script src="http://code.jquery.com/jquery-latest.js"></script>
-
-			<script>
-			var q = parse('q')
-			function parse(val){
-				var result = undefined,
-				tmp = [];
-				location.search
-				//.replace ( "?", "" )
-				// this is better, there might be a question mark inside
-				.substr(1)
-				.split("&")
-				.forEach(function (item) {
-					tmp = item.split("=");
-					if (tmp[0] === val) result = decodeURIComponent(tmp[1]);
-				});
-				return result;
-			}
-			if(q === undefined){
-				$.ajax({
-					type: 'GET',
-					url: domain+'/api/problems/all',
-					dataType: 'json',
-					error: function(xhr){
-						console.log(xhr);
-					},
-					success: function(res){
-						if(!res['message']){
-							console.log("work")
-							res.forEach(function(element){
-								$('question').append('<div class="Q">'+escape(element['id'])+'</div>')
-							})
-						}
+	<script>
+		var q = parse('q')
+		function parse(val){
+			var result = undefined, tmp = [];
+			location.search
+			
+			//.replace ( "?", "" )
+			// this is better, there might be a question mark inside
+			.substr(1).split("&").forEach(function(item){
+				tmp = item.split("=");
+				if(tmp[0] === val) result = decodeURIComponent(tmp[1]);
+			});
+			return result;
+		}
+		if(q === undefined || q===''){
+			$.ajax({
+				type: 'GET',
+				url: domain + '/api/problems/all',
+				dataType: 'json',
+				error: function(xhr){
+					console.log(xhr);
+				},
+				success: function(res){
+					if(!res['message']){
+						res.forEach(function(element){
+							$('#question').append('<div class="Q">' + '<a href="' + front_domain + '/problem/' + element['id'] + '">' + element['id'] + '</a> ' + element['title'] + '</div>')
+						})
 					}
-				})
-			}
-			else{
-				$.ajax({
-					type: 'POST',
-					url: domain+'/api/tag',
-					dataType: 'json',
-					data: q,
-					error: function(xhr){
-						console.log('error');
-					},
-					success: function(res){
-						if(!res['message']){
-							console.log("work")
-							res.forEach(function(element){
-								$('question').append('<div class="Q">'+escape(element['id'])+'</div>')
-							})
-						}
+				}
+			})
+		}else{
+			$.ajax({
+				type: 'POST',
+				url: domain + '/api/tag',
+				dataType: 'json',
+				data: {q_arr: q.split(',')},
+				error: function(xhr){
+					console.log('error');
+				},
+				success: function(res){
+					if(!res['message']){
+						res.forEach(function(element){
+							$('#question').append($('#question').append('<div class="Q">' + '<a href="' + front_domain + '/problem/' + element['id'] + '">' + element['id'] + '</a> ' + element['title'] + '</div>'))
+						})
 					}
-				})
-			}
-			</script>
-			<style>
-			.Q {
-				margin: 1.5em;
-				border: 1em solid #ffe4e1;
-				border-radius: 1.5em;
-				display: inline-block;
-				background-color: #ffe4e1;
-			}
-			</style>
+				}
+			})
+		}
+		//via: http://stackoverflow.com/questions/7171099/how-to-replace-url-parameter-with-javascript-jquery
+		function replaceUrlParam(url, paramName, paramValue){
+	    if(paramValue == null)
+	        paramValue = '';
+	    var pattern = new RegExp('\\b('+paramName+'=).*?(&|$)')
+	    if(url.search(pattern)>=0){
+	        return url.replace(pattern,'$1' + paramValue + '$2');
+	    }
+	    return url + (url.indexOf('?')>0 ? '&' : '?') + paramName + '=' + paramValue 
+		}
+		//NNNNNNNNNNNNNNNNNNNNNOOOOOOOOOOOOOOOOOOOTTTTTTTTTTTTTTTTEEEEEEEEEEEEEEEEEE! STATIC PATH
+		function custom_search(){
+			window.location = replaceUrlParam(front_domain+'/main-single', 'q', $('#search').val())
+		}
+		
+		$('#search').keypress(function(e){
+  			if(e.which == 13){
+    			custom_search()
+  			}
+		});
+	</script>
 
 
-<script data-align="right" data-overlay="false" id="keyreply-script" src="//keyreply.com/chat/widget.js" data-color="#E4392B" data-apps="JTdCJTIyZW1haWwlMjI6JTIyeHVlYmFAaW5mb3Iub3JnJTIyJTdE"></script>
-		</body>
-		</html>
+
+	<script data-align="right" data-overlay="false" id="keyreply-script"
+		src="//keyreply.com/chat/widget.js" data-color="#E4392B"
+		data-apps="JTdCJTIyZW1haWwlMjI6JTIyeHVlYmFAaW5mb3Iub3JnJTIyJTdE"></script>
+</body>
+</html>

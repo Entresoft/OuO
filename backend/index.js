@@ -15,6 +15,7 @@ var IS_VALID = require('IS_VALID');
 var app = express();
 var Db = require('Database');
 var regist = require('regist');
+var new_question = require('new_question');
 var allowCrossDomain = function(req, res, next) {
 	res.header('Access-Control-Allow-Origin', 'http://infor.org:20001');
   res.header('Access-Control-Allow-Methods', 'GET,POST');
@@ -46,15 +47,13 @@ app.get('/api/problems/all', function(req, res){
 });
 
 app.get('/users/:id', function(req, res){
-	res.header('Access-Control-Allow-Credentials', 'true');
-	IS_USER(req, function(is_login){
-		profileMethod(req, res, is_login); //
-	})
+		profileMethod(req, res); 
 });
 
 app.post('/login', function(req, res){
 	res.header('Access-Control-Allow-Credentials', 'true');
 	IS_USER(req, function(is_login){
+		console.log(`index.js /login is_login ${is_login}`)
   	regist.login(req, res, is_login); //
 	})
 })
@@ -88,7 +87,6 @@ app.post('/api/tag', function(req, res){
 app.get('/api/resend', function(req, res){
 	res.header('Access-Control-Allow-Credentials', 'true');
 	IS_USER(req, function(is_login){
-		console.log("aaaaaaaaaaaaaaaaaa"+is_login)
 		regist.resend(req, res, is_login)	//
 	})
 });
@@ -96,6 +94,7 @@ app.get('/api/resend', function(req, res){
 app.get('/api/is_login', function(req, res){
 	res.header('Access-Control-Allow-Credentials', 'true');
 	IS_USER(req, function(is_login){
+		console.log(`index.js /api/is_login is_login ${is_login}`)
 		if(is_login){
 			res.end(JSON.stringify({login: true}))
 		}else{
@@ -115,5 +114,12 @@ app.post('/api/passwd', function(req, res){
 	res.header('Access-Control-Allow-Credentials', 'true');
 	IS_USER(req, function(is_login){
 		passwd(req, res, is_login);
+	})
+});
+
+app.post('/dfjk/sdfjkl', function(req, res){
+	res.header('Access-Control-Allow-Credentials', 'true');
+	IS_USER(req, function(is_login){
+		new_question(req, res, is_login);
 	})
 });

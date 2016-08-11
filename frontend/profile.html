@@ -1,94 +1,68 @@
 <html>
 <head>
+<style>
+.Qq {
+	margin: 1.5em;
+	border: 1em solid #ffe4e1;
+	border-radius: 1.5em;
+	display: inline-block;
+	background-color: #ffe4e1;
+}
+</style>
 </head>
 <body>
-			<h2 id="user-title">User Profile</h2>
-			<p id="email-href">Email</p>
-			<div id="question">
-				<div id="AC">
-					<h2>AC</h2>
-				</div>
-				<div id="WA">
-					<h2>WA</h2>
-				</div>
-			</div>
+</body>
+<h2 id="user-title">User Profile</h2>
+<p id="email-href">Email</p>
+<div id="question">
+	<div id="AC">
+		<h2>AC</h2>
+	</div>
+	<div id="WA">
+		<h2>WA</h2>
+	</div>
+</div>
 
-			<script src="http://code.jquery.com/jquery-latest.js"></script>
-			<style>
-			.Qq {
-				margin: 1.5em;
-				border: 1em solid #ffe4e1;
-				border-radius: 1.5em;
-				display: inline-block;
-				background-color: #ffe4e1;
-			}
-			</style>
-			<script src="/config.js"></script>
-			<script>
-			var id = location.pathname.match(/\/[^\/]*$/gi)[0].replace(/^\//gi, '');
-			$.ajax({
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
+<script src="/config.js"></script>
+<script>
+	var id = location.pathname.match(/\/[^\/]*$/gi)[0].replace(/^\//gi, '');
+	$.ajax({
 				type: 'GET',
-				url: domain+"/users/"+id,
+				url: domain + "/users/" + id,
+				dataType: 'json',
 				error: function(xhr){
 					console.log(xhr);
 				},
 				success: function(res){
 					if(!res['message']){
 						var email = res['email']
-						var AC = res['AC']
-						var WA = res['WA']
+						var AC = res['AC'] || [];
+						var WA = res['WA'] || [];
 						var nickname = res['nickname']
 						AC.forEach(function(element){
-							$('#AC').append('<div class="Qq">'+'<a href=\"'+domain+'/q/'+element+'\" style="text-decoration: none;">'+element+'</div>')
+							$('#AC').append('<div class="Qq">'
+											+ '<a href=\"'+front_domain+'/problem/'+element+'\" style="text-decoration: none;">'
+											+ element + '</div>')
 						});
 						WA.forEach(function(element){
-							$('#WA').append('<div class="Qq">'+'<a href=\"'+domain+'/q/'+element+'\" style="text-decoration: none;">'+element+'</div>')
+							$('#WA').append('<div class="Qq">'
+											+ '<a href=\"'+front_domain+'/problem/'+element+'\" style="text-decoration: none;">'
+											+ element + '</div>')
 						});
-						$('#user-title').text(nickname+'\'s Profile')
-						$('email-href').text(email)
+						$('#user-title').text(nickname + '\'s Profile')
+						$('#email-href').text(email)
+					}else{
+						console.log(res['message']);
 					}
 				}
 
 			})
-			$("#ch").click(function () {
-				$("#qch").toggle();
-			});
-			$("#math").click(function () {
-				$("#qmath").toggle();
-			});
-			$("#en").click(function () {
-				$("#qen").toggle();
-			});
-			$("#phy").click(function () {
-				$("#qphy").toggle();
-			});
-			$("#che").click(function () {
-				$("#qche").toggle();
-			});
-			$("#ges").click(function () {
-				$("#qges").toggle();
-			});
-
-			$("#bio").click(function () {
-				$("#qbio").toggle();
-			});
-
-			$("#geo").click(function () {
-				$("#qgeo").toggle();
-			});
-
-			$("#his").click(function () {
-				$("#qhis").toggle();
-			});
-
-			$("#soc").click(function () {
-				$("#qsoc").toggle();
-			});
-			</script>
+</script>
 
 
 
-			<!--<script id="keyreply-script" src="//keyreply.com/chat/widget.js" data-align="right" data-color="#E4392B" data-apps="JTdCJTIybGluZSUyMjolMjJodHRwOi8vbGluZS5tZS90aS9wL1NJc2Z3SUJwN2IlMjIsJTIydHdpdHRlciUyMjolMjJAczk1MDQ0OSUyMiwlMjJmYWNlYm9vayUyMjolMjJTaW5jbGFpcmVDaGVuZyUyMiwlMjJlbWFpbCUyMjolMjJzOTUwNDQ5QHByb3Rvbm1haWwuY2olMjIlN0Q="></script>
+<!--<script id="keyreply-script" src="//keyreply.com/chat/widget.js" data-align="right" data-color="#E4392B" data-apps="JTdCJTIybGluZSUyMjolMjJodHRwOi8vbGluZS5tZS90aS9wL1NJc2Z3SUJwN2IlMjIsJTIydHdpdHRlciUyMjolMjJAczk1MDQ0OSUyMiwlMjJmYWNlYm9vayUyMjolMjJTaW5jbGFpcmVDaGVuZyUyMiwlMjJlbWFpbCUyMjolMjJzOTUwNDQ5QHByb3Rvbm1haWwuY2olMjIlN0Q="></script>
 		-->
-	</body>
-	</html>
+</html>
